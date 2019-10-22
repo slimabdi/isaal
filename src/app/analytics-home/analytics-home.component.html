@@ -1,0 +1,269 @@
+<!-- <button mat-button (click)="print()">PRINT</button> -->
+<div class="page-container">
+
+    <div class="main-content">
+
+        <!--  Dashboards list -->
+        <div class="cards-home">
+            <div class="cards-home-header">
+                <h5 class="list-title" (click)="goToPage('dashboards')">{{ "My Dashboards" | translate }}</h5>
+
+                <span> {{ dashboards_number >= 3 ? 3 : dashboards_number }}/{{ dashboards_number }}</span>
+            </div>
+            <hr>
+            <div *ngIf="dashboards && dashboards.length > 0; else dashboards_wireframe" class="cards-home-container">
+                <mat-card *ngFor="let dashboard of dashboards.slice(0,3)" class="hoverable-card">
+                    <mat-card-header class="dashboard-header">
+                        <div mat-card-avatar class="dashboard-picture" [style.background-image]="'url(' + dashboard.picture +')'"></div>
+                        <mat-card-title class="title">{{ dashboard.name | slice:0:20 }}</mat-card-title>
+                        <!-- <mat-card-subtitle>{{ dashboard.nd_type }}</mat-card-subtitle> -->
+                        
+                        <mat-icon [matMenuTriggerFor]="mainMenu" class="delete-icon" color="primary">more_horiz</mat-icon>
+                        
+                        <mat-menu #mainMenu="matMenu">
+                            <a mat-menu-item (click)="deleteDashboard(dashboard)">Delete</a>
+                        </mat-menu>
+                            
+                    </mat-card-header>
+                    
+                    <div class="home-dashboard-image-container" routerLink="../dashboards/{{dashboard.id}}/{{dashboard.name.split('/').join(' ')}}">
+                        <div class="overlay"></div>
+                        <img mat-card-image class="dashboard-cover" [src]="dashboard.image" alt="{{ dashboard.name }} cover">
+                    </div>
+                    <!-- <mat-card-content>
+                        <p>
+                            {{dashboard.description  | slice:0:100 }}
+                        </p>
+                    </mat-card-content> -->
+                    <mat-card-actions class="actions">
+                        <div class="team-members">
+                            <img class="member-image" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=966383853450476&height=200&width=200&ext=1548599352&hash=AeQth9AXcC002sdi" alt="">
+                            <img class="member-image" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=966383853450476&height=200&width=200&ext=1548599352&hash=AeQth9AXcC002sdi" alt="">
+                            <img class="member-image" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=966383853450476&height=200&width=200&ext=1548599352&hash=AeQth9AXcC002sdi" alt="">
+                            
+                            <span class="team-number">
+                                +2
+                            </span>
+                        </div>
+
+                    <div>
+
+                        <button mat-flat-button routerLink="../dashboards/{{dashboard.id}}/{{dashboard.name.split('/').join(' ')}}" style="float:right;background-color: #ececec;
+                        color: #4b85e6;">Explore</button>
+                        <button mat-button class="report-button" color="primary" (click)="showReports(dashboard.id, dashboard.name)"> 
+                            Reports
+                                <!-- <mat-icon color="primary">trending_up</mat-icon> -->
+                            </button>
+                    </div>
+                        
+                        <!-- <button mat-button color="accent" (click)="deleteDashboard(dashboard)">Delete</button> -->
+                    </mat-card-actions>
+                </mat-card>
+                <mat-card class="wireframe-card-hoverable" (click)="addPage()">
+                    
+                        <mat-card-header class="dashboard-header">
+                        </mat-card-header>
+                        
+                        <div class="home-dashboard-add-wireframe" >
+                            <div class="plus">
+                                +
+                            </div>
+                            <div>
+                                Add a new Dashboard...
+                            </div>
+                        </div>
+    
+                        <mat-card-actions class="actions">
+                        </mat-card-actions>
+    
+                </mat-card>
+                <mat-card *ngIf="dashboards.length > 3" class="view-more" (click)="goToPage('dashboards')">
+                    <i class="fas fa-angle-right"></i>
+                </mat-card>
+            </div>
+
+            <ng-template #dashboards_wireframe>
+                <div *ngIf="dashboards && dashboards.length == 0; else new_dash" class="cards-home-container">
+                    <mat-card class="wireframe-card-hoverable" (click)="addPage()">
+
+                        <mat-card-header class="dashboard-header">
+                        </mat-card-header>
+                        
+                        <div class="home-dashboard-add-wireframe" >
+                            <div class="plus">
+                                +
+                            </div>
+                            <div>
+                                Create your first Dashboard!
+                            </div>
+                        </div>
+    
+                        <mat-card-actions class="actions">
+                        </mat-card-actions>
+        
+                    </mat-card>
+                </div>
+                <ng-template #new_dash>
+                    <div class="cards-home-container" >
+                        <mat-card *ngFor="let wireframe of [1,2,3,4]" class="wireframe-card">
+                                
+                                <mat-card-header class="dashboard-header">
+                                    <div mat-card-avatar class="dashboard-picture-wireframe"></div>
+                                    <mat-card-title class="title-wireframe"></mat-card-title>
+                                    <!-- <mat-card-subtitle class="benchmark-subtitle"></mat-card-subtitle> -->
+                                </mat-card-header>
+                                
+                                <div class="home-dashboard-image-container-wireframe"></div>
+        
+                                <mat-card-actions class="actions">
+                                    <div class="team-members">
+                                        <div *ngFor="let i of [1,2,3]" class="member-image-wireframe"></div>
+                                    </div>
+                                    <div class="button-wireframe"></div>
+                                </mat-card-actions>
+            
+                        </mat-card>
+                        <mat-card class="view-more" >
+                            <i class="fas fa-angle-right"></i>
+                        </mat-card>
+                    </div>
+                </ng-template>
+                
+            </ng-template>
+        </div>
+
+
+        <!--  Benchmarks list -->
+        <div class="cards-home">
+            <div class="cards-home-header">
+                <h5 class="list-title" (click)="goToPage('benchmarks')">{{ "My Benchmarks" | translate }}</h5>
+                <span>{{ benchmarks_number >= 3 ? 3 : benchmarks_number }}/{{ benchmarks_number }}</span>
+            </div>
+
+            <hr>
+            
+            <div *ngIf="benchmarks && benchmarks.length > 0; else benchmarks_wireframe" class="cards-home-container">
+                
+                <mat-card *ngFor="let benchmark of benchmarks.slice(0,3)" class="hoverable-card">
+
+                    <mat-card-header>
+                        <div mat-card-avatar class="card-avatar-text">{{ benchmark.name && benchmark.name.split(':') && benchmark.name.split(':')[1] && benchmark.name.split(':')[1][1] ? benchmark.name.split(':')[1][1] : benchmark.name[1] }}</div>
+                        <mat-card-title class="benchmark-title">{{ !benchmark.name ? '' : benchmark.name.split(':') ? benchmark.name.split(':')[1] : benchmark.name | slice:0:20 }}{{ benchmark.name.split(':')[1] && benchmark.name.split(':')[1].length > 20 ? '...' : '' }}</mat-card-title>
+                        <mat-icon class="delete-icon" color="primary">more_horiz</mat-icon>
+                        <mat-card-subtitle class="benchmark-subtitle">{{ benchmark.nd_type ? benchmark.nd_type : '' }}</mat-card-subtitle>
+                    </mat-card-header>
+                    
+                    <mat-card-content class="benchmark-pages2">
+                        
+                        <!-- <div *ngFor="let account of benchmark.accounts" class="bench-image" [style.background-image]="account.picture"></div> -->
+                        <div *ngIf="benchmark.accounts && benchmark.accounts.length > 0; else noAccounts">
+                            <div *ngFor="let account of benchmark.accounts.slice(0,10) | keyvalue">
+                                <img [src]="account.value.picture" class="bench-image2">
+                            </div>
+                        </div>
+                        <ng-template #noAccounts>
+                            No accounts found for this Benchmark!
+                        </ng-template>
+
+                        
+                    </mat-card-content>
+
+                    <mat-card-actions class="actions">
+                        <div style="display: flex; align-items: center">
+                            <img src="https://lipis.github.io/flag-icon-css/flags/4x3/ax.svg" width="24px">
+                            <span style="font-size: 12px; margin-left: 5px;">{{ benchmark.name.split(':')[0] | slice:0:15 }}</span>
+                        </div>
+
+                        <div>
+                            <button mat-flat-button routerLink="../benchmarks/{{benchmark.id}}/{{benchmark.name.split('/').join(' ')}}" style="background-color: #ececec;
+                            color: #4b85e6;">Explore</button>
+                        </div>
+                            
+                    </mat-card-actions>
+
+                </mat-card>
+                <mat-card class="wireframe-card-hoverable" (click)="addBench()">
+                    
+                    <mat-card-header class="dashboard-header">
+                    </mat-card-header>
+                    
+                    <div class="home-dashboard-add-wireframe" >
+                        <div class="plus">
+                            +
+                        </div>
+                        <div>
+                            Add a new Benchmark...
+                        </div>
+                    </div>
+
+                    <mat-card-actions class="actions">
+                    </mat-card-actions>
+    
+                </mat-card>
+                <mat-card *ngIf="benchmarks.length > 3" class="view-more" (click)="goToPage('benchmarks')">
+                    <i class="fas fa-angle-right"></i>
+                </mat-card>
+            </div>
+
+            <ng-template #benchmarks_wireframe>
+                <div *ngIf="benchmarks && benchmarks.length == 0; else new_bench" class="cards-home-container">
+                    <mat-card class="wireframe-card-hoverable" (click)="addBench()">
+                
+                        <mat-card-header class="dashboard-header">
+                        </mat-card-header>
+                        
+                        <div class="home-dashboard-add-wireframe" >
+                            <div class="plus">
+                                +
+                            </div>
+                            <div>
+                                Create your first Benchmark!
+                            </div>
+                        </div>
+    
+                        <mat-card-actions class="actions">
+                        </mat-card-actions>
+        
+                </mat-card>
+                </div>
+                <ng-template #new_bench>
+                    <div class="cards-home-container">
+                        
+                        <mat-card *ngFor="let wireframe of [1,2,3,4]" class="wireframe-card">
+                        
+                            <mat-card-header class="dashboard-header">
+                                <div mat-card-avatar class="dashboard-picture-wireframe"></div>
+                                <mat-card-title class="title-wireframe"></mat-card-title>
+                                <!-- <mat-card-subtitle class="benchmark-subtitle"></mat-card-subtitle> -->
+                            </mat-card-header>
+                            
+                            <div class="home-dashboard-image-container-wireframe"></div>
+    
+                            <mat-card-actions class="actions">
+                                <div class="title-wireframe"></div>
+                                <div class="button-wireframe"></div>
+                            </mat-card-actions>
+    
+                    </mat-card>
+                    <mat-card class="view-more" >
+                        <i class="fas fa-angle-right"></i>
+                    </mat-card>
+                    </div>
+                </ng-template>
+                
+            </ng-template>
+
+        </div>
+
+
+    </div>
+
+    <div class="side-content">
+        <div>
+            <h3>Welcome back</h3>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum laudantium et quibusdam. Facere, minima earum reiciendis ducimus eligendi vel autem dolorum quo.
+        </div>
+        
+    </div>
+
+</div>

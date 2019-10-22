@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://rest.preprod.kpeiz.digital",
+      "secure": false,
+      "pathRewrite": {
+        "^/api": ""
+      },
+      "changeOrigin": true
+    }
+  }

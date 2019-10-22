@@ -1,0 +1,147 @@
+.dashboard-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  // transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.widget-item{
+  border-radius: 5px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.dashboard-content {
+  width: 90%;
+  height: 60%;
+  padding: 15px;
+
+}
+
+.mat-grid-tile {
+  padding: 0px;
+}
+
+.circular {
+  border-radius: 50px;
+}
+
+.kpi-value {
+  font-size: 30px;
+}
+
+.kpi-title {
+  font-size: 100%;
+}
+
+.fb-reactions {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+  width: 600px;
+}
+.reaction-cells {
+  width: 70px;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.interactions-card {
+  width: 700px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.gridster { background-color : white;}
+
+.page__header{
+  display: flex;
+  align-self: center;
+  padding: 10px;
+  background-color: #E91E63;
+  width: 100%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+
+
+}
+
+.page__content{
+  position: relative;
+  padding: 10px;
+
+}
+
+
+// ------------------------------------------------------
+//For printing (testing)
+//-------------------------------------------------------
+
+.pages{
+  margin: 20px 40px 0 0;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+
+  .page{
+    width: 85vw ;
+    height : calc(0.65 * 85vw);
+    margin: 0 auto 20px;
+    position:relative;
+    background-color: #fff;
+
+    
+    .widget-item {
+      position:absolute;
+      margin : 10px;
+    }
+    &__content{
+        width: inherit;
+        height: inherit;
+    }
+  }
+}
+
+// @media all {
+// 	.page-break	{ display: none; }
+// }
+
+@media print {
+  @page {
+    size: A4 landscape ;
+    margin:0 !important;
+  }
+
+  body{
+    overflow-x: hidden !important; 
+  }
+
+
+  .pages{
+    margin:0;
+    padding:0;
+    
+  }
+  .page{
+
+    height : 210mm !important;
+    width : 297mm !important;
+    overflow: hidden;
+    padding: 0 !important; 
+    margin: 0 !important; 
+
+  }
+
+ 
+
+}

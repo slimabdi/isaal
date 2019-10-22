@@ -1,0 +1,159 @@
+<!--------------- POSTS --------------->
+
+  <div>
+    Showing posts for {{ date }}
+  </div>
+<div class="posts-container" *ngIf="posts.length > 0; else no_posts">
+    <!-- <div *ngFor=" let page of data | keyvalue"> -->
+    <div *ngFor=" let post of posts | keyvalue; let i = index" class="post-frame">
+
+        <!-- <div> -->
+          <a [href]="post.value.post_link" target="_blank">
+            <div class="post_image_container">
+              <img *ngIf="post.value.picture" [src]="post.value.picture" alt="Post image">
+              <div style="padding: 10px">
+                  <img [src]="postsPages[post.value.account_id].picture" alt="" style="margin: 5px; border-radius: 50%; width: 50px; height: 50px;">
+                  <!-- <span style="margin: 5px;">{{ post.value.pageName }}</span> -->
+                  <span style="margin: 5px; color: white;">{{ postsPages[post.value.account_id].name }}</span>
+                </div>
+            </div>
+          </a>
+        
+          <!-- <img src="post.value.page_picture" style="border-radius: 50%" alt="Page picture"> -->
+
+          
+            <div class="post-message">{{ post.value.message | slice:0:90}}...</div>
+          <!-- <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(post.value.post_link)' width="540" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe> -->
+
+          <div class="metrics_container">
+            <div>
+            <!-- <div class="fb-reactions fb-reactions--posts"> -->
+
+              <div class="reaction">
+                <div class="reaction-emoticon" matTooltip="Like" matTooltipPosition="above">
+                  <img src="./assets/img/like.png" alt="facebook reactions">
+                </div>
+                <div class="reaction-count"><strong>{{post.value.like || 0 }}</strong></div>
+              </div>
+
+              <div class="reaction">
+                <div class="reaction-emoticon" matTooltip="Love" matTooltipPosition="above">
+                  <img src="../../assets/img/love.png" alt="facebook reactions">
+                </div>
+                <div class="reaction-count"><strong>{{post.value.love || 0 }}</strong></div>
+              </div>
+
+              <div class="reaction">
+                <div class="reaction-emoticon" matTooltip="Haha" matTooltipPosition="above">
+                  <img src="../../assets/img/haha.png" alt="facebook reactions">
+                </div>
+                <div class="reaction-count"><strong>{{post.value.haha || 0 }}</strong></div>
+              </div>
+
+              <div class="reaction">
+                <div class="reaction-emoticon" matTooltip="Wow" matTooltipPosition="above">
+                  <img src="../../assets/img/wow.png" alt="facebook reactions">
+                </div>
+                <div class="reaction-count"><strong>{{post.value.wow || 0 }}</strong></div>
+              </div>
+
+              <div class="reaction">
+              <div class="reaction-emoticon" matTooltip="Sad" matTooltipPosition="above">
+                  <img src="../../assets/img/sad.png" alt="facebook reactions">
+                </div>
+              <div class="reaction-count"><strong>{{post.value.sorry || 0 }}</strong></div>
+              </div>
+
+              <div class="reaction">
+                <div class="reaction-emoticon" matTooltip="Angry" matTooltipPosition="above">
+                  <img src="../../assets/img/angry.png" alt="facebook reactions">
+                </div>
+                <div class="reaction-count"><strong>{{post.value.angry || 0 }}</strong></div>
+              </div>
+
+                <!-- <div class="reaction-count"><strong>{{post.value.haha || 0 }}</strong> haha</div>
+                <div class="reaction-count"><strong>{{post.value.love || 0 }}</strong> love</div>
+                <div class="reaction-count"><strong>{{post.value.haha || 0 }}</strong> haha</div>
+                <div class="reaction-count"><strong>{{post.value.wow || 0 }}</strong> wow</div>
+                <div class="reaction-count"><strong>{{post.value.sorry || 0 }}</strong> sad</div>
+                <div class="reaction-count"><strong>{{post.value.angry || 0 }}</strong> angry</div> -->
+            <!-- </div> -->
+
+            <!-- <div class="post-metrics"> -->
+                
+              <!-- <div class="post-metrics1"> -->
+
+                  <div *ngIf="!post.value.isPublic"></div>
+      
+                  <div matTooltip="Reactions" matTooltipPosition="above">
+                    <span><strong>{{ post.value.reactions || 0 }}</strong></span><i class="fa fa-thumbs-up"></i>
+                  </div>
+  
+                  <div matTooltip="Comments" matTooltipPosition="above">
+                    <span><strong>{{ post.value.comments || 0 }}</strong></span><i class="fa fa-comment-dots"></i>
+                  </div>
+  
+                  <div matTooltip="Shares" matTooltipPosition="above">
+                    <span><strong>{{ post.value.shares || 0 }}</strong></span><i class="fa fa-share"></i>
+                  </div>
+                
+                  <div matTooltip="Interactions" matTooltipPosition="above">
+                    <span><strong>{{ post.value.interactions || 0 }}</strong></span><i class="fa fa-american-sign-language-interpreting"></i>
+                  </div>
+  
+                  <div matTooltip="Engagement rate" matTooltipPosition="above" *ngIf="post.value.isPublic; else empty_div" style="grid-column: 5 / 7">
+                      <span style="margin-right: 3px;"><strong class="metric-number">{{ post.value.kpeiz_post_engagment_rate || 0 }} </strong></span>er
+                  </div>
+                  <ng-template #empty_div>
+                    <div></div>
+                  </ng-template>
+                
+              
+              <!-- </div> -->
+
+              <!-- <div class="post-metrics2"> -->
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.kpeiz_post_engagment_rate || 0 }}</strong></div>
+                  <div>er</div>
+                </div>
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.post_impressions_unique || 0 }}</strong></div>
+                  <div>reach</div>
+                </div>
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.post_impressions_organic_unique || 0 }}</strong></div>
+                  <div>org. reach</div>
+                </div>
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.post_impressions_paid_unique || 0 }}</strong></div>
+                  <div>paid reach</div>
+                </div>
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.post_impressions_fan || 0 }}</strong></div>
+                  <div>fans impl.</div>
+                </div>
+
+                <div *ngIf="!post.value.isPublic">
+                  <div class="metric-number"><strong>{{ post.value.virality || 0 }}</strong></div>
+                  <div>virality</div>
+                </div>
+
+              <!-- </div> -->
+
+            <!-- </div> -->
+          </div>
+        <!-- </div> -->
+      </div>
+  </div>
+</div>
+
+<ng-template #no_posts>
+  <div class="no-posts">
+    Sorry, you didn't post anything on {{ date }}!
+  </div>
+</ng-template>

@@ -1,0 +1,81 @@
+<mat-tab-group mat-stretch-tabs class="stretched-tabs ">
+    <!-- Second Tab -->
+    <mat-tab label="ADD A BENCHMARK" *ngIf="true" > 
+      <div class="form-container mt-3">
+        <form class="form" [formGroup]="benchmarkForm" (ngSubmit)="onAddExistBenchmark()">
+          <div class="row">
+            <div class="col-md-6 colorexisiting">
+              Choose from existing benchmark
+            </div>
+            <div class="col-md-6">
+                <mat-form-field  class="full-width ">
+                       
+                    <input type="text" placeholder="Search" matInput [formControl]="benchmarkName"><i class="search-icon fa fa-search"></i>
+                    
+                  </mat-form-field>
+            </div>
+          </div>
+
+            <mat-radio-group class="radio-group" formControlName="bechmark">
+                <div class="row" >
+                  	<div class="benchmark-columns">
+                        <div class="benchmarkcard">
+                    <mat-radio-button  class="radio-button col-md-12" *ngFor="let benchmark of filteredBenchmarks | async | paginate: { itemsPerPage: 10, currentPage: p } " [value]="benchmark.id">
+                        {{benchmark.name}}
+                      </mat-radio-button>
+                    </div>
+                    </div>
+                    </div>
+                    </mat-radio-group>
+                    <div class="d-flex justify-content-center">.
+                        <pagination-controls  maxSize="7" previousLabel=""  nextLabel="" (pageChange)="p = $event"></pagination-controls>
+                 </div>
+                    
+            <button 
+            class="block mt-4"
+            type="submit"
+            [disabled]="!benchmarkForm.valid"
+            mat-stroked-button
+            >Add Benchmark</button>
+          </form>
+      </div>
+    </mat-tab>
+    <mat-tab label="ADD CUSTOM BENCHMARK">
+        <div class="form-container mt-3">
+          <form [formGroup]="pagesForm" class="form" (ngSubmit)="onAddCustom()">
+              <h6 class="color-input m-2">Pick name for your benchmark</h6>
+            <div class="input-container">
+               
+                <mat-form-field class="w-50 my-3 border-bleu">
+                    <input formControlName="bechmark_title"  matInput placeholder="Benchmark Name">
+                </mat-form-field>
+            </div>
+            
+            <div formArrayName="pages">
+             <div *ngFor = "let pageControl of pagesForm.get('pages').controls; index as i">
+               <h6 class="color-input m-2">Add facebook to create benchmark</h6>
+              <mat-form-field class="w-50 my-3 border-bleu">
+                <input class="myinput " matInput placeholder="http://facebookcom/example" [formControlName]="i">
+              </mat-form-field>
+              <button 
+                type="button" 
+                [disabled]="!pagesForm.get('pages').controls[i].valid"
+                mat-mini-fab
+                (click)="onAddPage()">
+                <mat-icon>add</mat-icon>
+               </button>
+              </div>
+            </div>
+              <mat-dialog-actions align="end" class="mb-5">
+                <!--   <button mat-button mat-dialog-close>Cancel</button> -->
+                  <button
+                    mat-button
+                    class="butonadd"
+                    [disabled]="!((pagesForm.get('pages').controls.length>=2 && pagesForm.get('pages').controls[1].value ) && pagesForm.get('bechmark_title').valid)"
+                    type="submit"
+                    cdkFocusInitial>Get Benchmark</button>
+                </mat-dialog-actions>
+          </form>
+        </div>
+      </mat-tab>
+</mat-tab-group>

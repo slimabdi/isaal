@@ -1,0 +1,120 @@
+<meta charset="utf-8">
+
+<mat-sidenav-container class="sidenav-container" >
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">
+
+      <a routerLink="/app">
+        <svg class="logo-xs-svg" alt="kpeiz" width="34" version="1.1" x="0px" y="0px" height="30px" viewBox="0 0 103.25 151.192"
+          enable-background="new 0 0 103.25 151.192">
+          <g fill="#ffffff">
+            <polygon points="0,151.192 0,0 55.077,0 55.077,22.68 25.487,22.68 25.487,151.192 "></polygon>
+            <polygon points="47.308,75.598 73.442,36.286 100.658,36.286 63.723,92.227 103.25,151.192 74.738,151.192 47.308,109.074 37.64,92.227 "></polygon>
+          </g>
+        </svg>
+      </a>
+
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a *ngFor="let tool of tools" mat-list-item matTooltip="{{tool.name}}" matTooltipPosition="right" [routerLink]="tool.route"
+        routerLinkActive="mat-list-item-active" [routerLinkActiveOptions]="{exact:false}">
+        <i class="material-icons">{{tool.icon}}</i>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav> -->
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="fixed-top">
+      <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+
+        <a routerLink="/app/analytics/home" class="logo-container">
+          <svg class="logo-xs-svg" alt="kpeiz" width="34" version="1.1" x="0px" y="0px" height="30px" viewBox="0 0 103.25 151.192"
+            enable-background="new 0 0 103.25 151.192">
+            <g fill="#ffffff">
+              <polygon points="0,151.192 0,0 55.077,0 55.077,22.68 25.487,22.68 25.487,151.192 "></polygon>
+              <polygon points="47.308,75.598 73.442,36.286 100.658,36.286 63.723,92.227 103.25,151.192 74.738,151.192 47.308,109.074 37.64,92.227 "></polygon>
+            </g>
+          </svg>
+        </a>
+
+        
+  
+        
+        <span class="navigation" charset="utf-8">
+          {{path | titlecase}}
+          <i *ngIf="name" class="fa fa-chevron-right"></i>
+          {{name }}
+        </span>
+        
+      <div class="navigation-tabs ml-auto">
+          
+        <app-nav-tabs></app-nav-tabs>
+
+        <div class="upgrade" routerLink="packs">
+            
+          <i class="fas fa-caret-up"></i>
+          <!-- <button mat-flat-button routerLink="packs"> -->
+          <span>Upgrade</span>
+          
+          <!-- </button> -->
+        </div>
+
+        <!-- <mat-icon (click)="openGlossary()">help_outline</mat-icon> -->
+        <span [matMenuTriggerFor]="mainMenu">
+            <img *ngIf="img_source; else default_picture" class="profile-picture" [src]="img_source" alt="">
+            <ng-template #default_picture>
+              <img class="profile-picture" src="https://mbevivino.files.wordpress.com/2011/08/silhouette_default.jpg" alt="">
+            </ng-template>
+        </span>
+
+        <mat-menu #mainMenu="matMenu">
+          <a mat-menu-item (click)="editProfile()">Edit profile</a>
+          <!-- <a mat-menu-item routerLink="packs">Upgrade</a> -->
+          <a mat-menu-item (click)="manage()">Manage teams</a>
+          <a mat-menu-item [matMenuTriggerFor]="language">Languages</a>
+          <a mat-menu-item (click)="logout()">Log out</a>
+        </mat-menu>
+        <mat-menu #language="matMenu">
+          <button mat-menu-item (click)="chnageLang('en')">English</button>
+          <button mat-menu-item (click)="chnageLang('fr')">Français</button>
+          <button mat-menu-item (click)="chnageLang('ar')">العربية</button>
+        </mat-menu>
+        
+        <i class="fas fa-question-circle glossary" (click)="openGlossary()"></i>
+
+      </div>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <!-- <app-nav-tabs [opened]="opened"></app-nav-tabs> -->
+
+    <!-- <div class="blurry" style="--toggler_active: 'inactive'"> -->
+      <router-outlet></router-outlet>
+    <!-- </div> -->
+
+    <div id="fab-dismiss" *ngIf="fabTogglerState==='active'" (click)="onToggleFab()">
+    </div>
+    <div class="fab-container">
+      <button mat-fab class="fab-toggler" color="primary" (click)="onToggleFab()">
+        <i class="material-icons" [@fabToggler]="{value: fabTogglerState}">add</i>
+      </button>
+      <div [@speedDialStagger]="buttons.length">
+        <button *ngFor="let btn of buttons" 
+                (click)="fireFunction(btn.function)" 
+                mat-mini-fab [matTooltip]="btn.name"
+                matTooltipPosition="before" 
+                class="fab-secondary" 
+                [color]="btn.color">
+          <i [class]="btn.icon"></i>
+        </button>
+      </div>
+    </div>
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>

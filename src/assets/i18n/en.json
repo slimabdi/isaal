@@ -1,0 +1,7 @@
+{
+    "Portetotdef": "Number of people who have viewed a content (eg: posts displayed on their Facbook wall) associated to your page within the selected period.",
+    "Engageuserdef": "Exact number of people who have clicked on a post (comment, share, click on a photo, pause video..).",
+    "Ptatdef": "People that created a topic from your Facebook page through a post that they liked, commented or shared.",
+    "commentdef": "Fans comments and sub-comments + Page administrators comments and responses.",
+    "ViralRatDform":"(People talking about it / Reach) X 100(People Talking About This/Reached users) X 100"
+}

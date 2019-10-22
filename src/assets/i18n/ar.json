@@ -1,0 +1,13 @@
+{
+    "analytics-home":{
+        "dashboards": "لوحة البينات",
+        "dashboard-visit-btn": "Visiter Dashboards",
+
+        "reports"   : "التقارير",
+        "reports-visit-btn": "View Repports",
+
+        "benchmarks": "المعايير",
+        "benchmarks-visit-btn": "View Benchmarks"
+
+    }
+}

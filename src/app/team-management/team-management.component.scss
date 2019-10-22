@@ -1,0 +1,63 @@
+// form{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+// }
+.container{
+    margin-top: 1.2rem;
+}
+mat-form-field{
+    width: 75%;
+}
+h5{
+    margin-bottom: 1.2rem;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+form{
+    button[type=submit]{
+        // float: right;
+        margin-top: 25px;
+    }
+}
+mat-list-option{
+    img{
+        display: inline;
+        width: 50px;
+        border-radius: 50%;
+    }
+}
+mat-list-item{
+    
+    img{
+        display: inline;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+}
+.mat-selection-list {
+    .mat-list-option{
+        .mat-list-item-content{
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+    }
+}
+/deep/ .mat-list {
+    &-item{
+       &-content{
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+    }
+} 
+.team-editor{
+    display: flex;
+    justify-content: space-between;
+    // align-content: center;
+    align-items: center;
+}

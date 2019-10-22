@@ -1,0 +1,55 @@
+<div *ngIf="widgets != null && widgets.length > 0; else fetchingData" class="big-container">
+  <!-- <div class="header">
+      
+  </div> -->
+
+  <div *ngIf="benchmarks; else spinner" class="child-container">
+      <div class="header-separator">
+          <button mat-button class="save-btn" [disabled]="layoutSaved" color="primary" (click)="saveLayout()">Save layout</button>
+        
+          <ngx-mat-drp (selectedDateRangeChanged)="updateRange($event)" class="calendar" [options]="datePickerOptions"></ngx-mat-drp>
+      </div>
+
+    <div class="grid-container">
+      <div>
+        <gridster [options]="options" class="gridster">
+          <gridster-item class="widget-item mat-elevation-z2" [item]="item" *ngFor="let item of benchmarks">
+              <!-- <div class="d-handle number" *ngIf="item.data.chart_type == 'number'; else title">
+                {{ item.data.name }}
+              </div>
+              <ng-template #title>
+              </ng-template> -->
+              <div class="d-handle"></div>
+            <app-widget class="benchmark-card" [social_accounts]="social_accounts" [widget]="item.data" [since]="since" [until]="until"></app-widget>
+          </gridster-item>
+        </gridster>
+      </div>
+    </div>
+  </div>
+
+<ng-template #spinner>
+  <div class="loading-indicator">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+</div>
+
+<ng-template #fetchingData>
+  <div *ngIf="widgets == null; else lottie">
+    Data for this Benchmark is not ready yet!
+  </div>
+  
+  <ng-template #lottie>
+    <div class="loading-indicator">
+      <lottie-animation-view
+          class="lottie-animation"
+          [options]="lottieConfig"
+          [width]="400"
+          [height]="300"
+          >
+      </lottie-animation-view>
+      <h1 class="mat-headline">Loading Benchmark..</h1>
+    </div>
+  </ng-template>
+
+</ng-template>

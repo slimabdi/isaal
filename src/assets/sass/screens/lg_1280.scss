@@ -1,0 +1,11 @@
+@import '../../assets/sass/global';
+
+@media (min-width: $lg_1280) and (max-width: $xl_1920){
+    //for home page
+    .card-avatar{
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+
+}

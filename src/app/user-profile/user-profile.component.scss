@@ -1,0 +1,69 @@
+.container{
+  position: relative;
+  height: 95%;
+}
+.profile-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.form-fields-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  > img{
+    border-radius: 50%; 
+    width: 150px; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-bottom: 30px;
+  }
+}
+.full-name{
+  display: flex; 
+  justify-content: space-between;
+  :nth-child(1){
+    margin-right: 50px;
+  }
+  :nth-child(2){
+    width: 100%;
+  }
+}
+
+.full-company{
+  display: flex; 
+  justify-content: space-between;
+  :nth-child(1){
+    margin-right: 50px;
+  }
+  :nth-child(2){
+    width: 100%;
+  }
+}
+
+.full-phone{
+  display: flex;
+  width: 100%; 
+  padding-bottom: -50px;
+  :nth-child(1){
+    margin-right: 50px;
+  }
+  :nth-child(2){
+    width: 100%;
+  }
+}
+.phone-error{
+  color: red; 
+  font-size: 12px;
+}
+.profile-btn{
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}

@@ -1,0 +1,198 @@
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link class="d-none d-sm-flex">
+      Overview
+  </a>
+  <a mat-tab-link class="d-none d-sm-flex">
+      Fans
+  </a>
+  <a mat-tab-link class="d-none d-sm-flex">
+      Engagement
+  </a>
+  <a mat-tab-link class="d-none d-sm-flex">
+      Posts
+  </a>
+</nav> -->
+
+
+<ng-container *ngIf="dashboard && dashboard.widgets; else notReady">
+  <!-- <div *ngIf="dashboard && dashboard.widgets; else notReady">
+    <mat-tab [label]="tab.key" *ngFor="let tab of dashboard.widgets | keyvalue">
+      {{tab.key}}
+    </mat-tab>
+  </div>
+  <ng-template #notReady>
+    Please wait.
+  </ng-template> -->
+
+  <mat-tab-group dynamicHeight (selectedTabChange)="onTabChanged($event)" class="tabs" >
+     
+      <mat-tab [label]="tab | titlecase" *ngFor="let tab of objectKeys(dashboard.widgets)">
+          <!-- <div class="grid-container">
+              <gridster [options]="options" class="gridster">
+                <gridster-item class="widget-item mat-elevation-z2" *ngFor="let widget of dashboard.widgets[tab] | keyvalue" [item]="widget.value">
+
+                  <div class="d-handle">x</div>
+                 
+                  <app-widget class="dashboard-card" [widget]="widget.value" [since]="since" [until]="until"></app-widget>
+                </gridster-item>
+              </gridster>
+            </div> -->
+      </mat-tab>
+    
+  </mat-tab-group>
+
+  
+
+  <div class="header"> 
+    <button mat-button class="save-btn" [disabled]="layoutSaved" color="primary" (click)="saveLayout()"><i class="far fa-save"></i></button>
+    <ngx-mat-drp (selectedDateRangeChanged)="updateRange($event)" class="calendar" [options]="datePickerOptions"></ngx-mat-drp>
+  </div>
+
+  <div class="grid-container">
+      <div>
+        <gridster [options]="options" class="gridster">
+          <ng-container *ngFor="let widget of current_widgets | keyvalue">
+            
+            <gridster-item *ngIf="widget.value.chart_type != 'number' && widget.value.chart_type != 'interactions'; else number_widget" class="widget-item" [item]="widget.value">
+                
+              <div class="d-handle"></div>
+              <app-widget class="dashboard-card" [widget]="widget.value" [since]="since" [until]="until"></app-widget>
+            </gridster-item>
+            <!-- mat-elevation-z2 -->
+            <ng-template #number_widget>
+    
+              <gridster-item *ngIf="widget.value.chart_type == 'number'; else interactions_widget" class="widget-item-number" [item]="widget.value">
+                <div class="d-handle"></div>
+                <app-widget class="dashboard-card" [widget]="widget.value" [since]="since" [until]="until"></app-widget>
+              </gridster-item>
+    
+              <ng-template #interactions_widget>
+                  <gridster-item class="widget-item-interactions" [item]="widget.value">
+                    <div class="d-handle"></div>
+                    <app-widget class="dashboard-card" [widget]="widget.value" [since]="since" [until]="until"></app-widget>
+                  </gridster-item>
+              </ng-template>
+            </ng-template>
+    
+          </ng-container>
+        </gridster>
+      </div>
+    </div>
+
+
+</ng-container>
+
+<ng-template #notReady>
+    <div class="loading-indicator">
+          
+        <lottie-animation-view
+              class="lottie-animation"
+              [options]="lottieConfig"
+              [width]="400"
+              [height]="300"
+              >
+        </lottie-animation-view>
+  
+        <h1 class="mat-headline">Loading your dashboard..</h1>
+      </div>
+  </ng-template>
+
+
+    <!--  <mat-tab [label]="tab.key" *ngFor="let tab of dashboard.widgets | keyvalue">
+      
+       <div *ngIf="ws_widgets.length > 0; else fetchingData" class="dash-container">
+  
+
+            <div *ngIf="dashboard; else spinner">
+            <div class="grid-container">
+                
+              <gridster [options]="options" class="gridster">
+                <gridster-item class="widget-item mat-elevation-z2"  *ngFor="let item of dashboard_overview" [item]="item">
+                  <div class="d-handle number" *ngIf="item.data.chart_type == 'number'; else title">
+                    {{ item.data.name }}
+                  </div>
+                  <ng-template #title>
+                    <div class="d-handle">
+                      {{ item.data.name | uppercase}}
+                    <br>
+                    <span style="color: cadetblue; font-size: 0.8rem">Fans Progression Widget</span>
+                    </div>
+                  </ng-template>
+                  <app-widget class="dashboard-card" [widget]="item.data" [since]="since" [until]="until"></app-widget>
+                </gridster-item>
+              </gridster>
+            </div>
+            </div>
+            
+            <ng-template #spinner>
+              <div class="loading-indicator">
+                <mat-spinner></mat-spinner>
+              </div>
+            </ng-template>
+        </div>
+        
+        <ng-template #fetchingData>
+          <div class="loading-indicator">
+            
+            <lottie-animation-view
+                  class="lottie-animation"
+                  [options]="lottieConfig"
+                  [width]="400"
+                  [height]="300"
+                  >
+            </lottie-animation-view>
+      
+            <h1 class="mat-headline">Loading your new dashboard..</h1>
+          </div>
+        </ng-template> 
+    </mat-tab>-->
+
+    <!-- <mat-tab label="Overview">
+      <div *ngIf="ws_widgets.length > 0; else fetchingData" class="dash-container">
+
+
+          <div *ngIf="dashboard; else spinner">
+          <div class="grid-container">
+              
+            <gridster [options]="options" class="gridster">
+              <gridster-item class="widget-item mat-elevation-z2"  *ngFor="let item of dashboard_overview" [item]="item">
+                <div class="d-handle number" *ngIf="item.data.chart_type == 'number'; else title">
+                  {{ item.data.name }}
+                </div>
+                <ng-template #title>
+                  <div class="d-handle">
+                    {{ item.data.name | uppercase}}
+                  <br>
+                  <span style="color: cadetblue; font-size: 0.8rem">Fans Progression Widget</span>
+                  </div>
+                </ng-template>
+                <app-widget class="dashboard-card" [widget]="item.data" [since]="since" [until]="until"></app-widget>
+              </gridster-item>
+            </gridster>
+          </div>
+          </div>
+          
+          <ng-template #spinner>
+            <div class="loading-indicator">
+              <mat-spinner></mat-spinner>
+            </div>
+          </ng-template>
+      </div>
+      
+      <ng-template #fetchingData>
+        <div class="loading-indicator">
+          
+          <lottie-animation-view
+                class="lottie-animation"
+                [options]="lottieConfig"
+                [width]="400"
+                [height]="300"
+                >
+          </lottie-animation-view>
+    
+          <h1 class="mat-headline">Loading your new dashboard..</h1>
+        </div>
+      </ng-template>
+    </mat-tab> -->
+
+   

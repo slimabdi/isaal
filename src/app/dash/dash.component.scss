@@ -1,0 +1,293 @@
+@import '../../assets/sass/global';
+@import '../../assets/sass/screens/xs_0';
+@import '../../assets/sass/screens/sm_600';
+@import '../../assets/sass/screens/md_960';
+@import '../../assets/sass/screens/lg_1280';
+@import '../../assets/sass/screens/xl_1920';
+
+
+.header{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  height: 48px;
+  z-index: 999;
+  top: calc(#{$menu_bar} + 2px);
+  right: 50px;
+  > button{
+    margin : 0 10px 0 0;
+  }
+}
+.calendar{
+  margin-bottom: -1.25rem;
+}
+.gridster{
+  background: $dashboard_bg !important;
+  overflow-x: unset !important;
+  overflow-y: unset !important;
+}
+.grid-container {
+  background: $dashboard_bg !important;
+  width: 100%;
+  height: calc(100% - (#{$menu_bar} + #{$toolbar}) );
+  > div{
+    width: 100%;
+    height: 100%;
+    padding: 20px 150px !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.dashboard-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.mat-tab-link{
+  min-width: 0 !important;
+  padding: 0 20px !important;
+}
+.mat-tab-nav-bar{
+  padding-left: 30px;
+}
+
+.posts_tile {
+  height: 300px !important;
+}
+
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.dashboard-content {
+  width: 90%;
+  height: 60%;
+  padding: 15px;
+
+}
+// .dashboard-content:hover {
+//   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 7px 7px rgba(0, 0, 0, 0.22);
+// }
+
+.kpi-arrow {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+  width: 30px;
+}
+
+.mat-grid-tile {
+  padding: 0px;
+}
+
+.circular {
+  border-radius: 50px;
+}
+
+.kpi-value {
+  font-size: 30px;
+}
+
+
+.reaction-cells {
+  width: 70px;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.interactions-card {
+  width: 700px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+.widgets-grid{
+  height: 100%;
+}
+
+
+.widgets-flexbox{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+#ngx-mat{
+  ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0 !important;
+    ::ng-deep .mat-form-field-underline{
+      background-color:transparent !important;
+      height: 0px !important;
+    }
+  }
+}
+  
+.d-handle {
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 10px 0 5px 10px;
+  width: 100%;
+  height:50px;
+  top:0;
+  right:0;
+  position:absolute;
+  z-index:2;
+  //background: gray;
+  &:hover{
+    cursor: grab;
+  }
+
+}
+
+.number{
+  text-align: center;
+  height: 50%;
+  padding: 0;
+  margin: 0;
+  padding-top: 1.5em;
+}
+
+// *****************************************
+
+
+.chart-container{
+    height: inherit;
+    width: 100%;
+}
+.canvas-container{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: inherit;
+}
+.widget{
+
+    padding: 10px;
+}
+
+.kpi-arrow{
+    width: 30px;
+}
+.kpi-line{
+    color: white;
+    margin-top: 0; 
+    margin-bottom: 5px;
+}
+.kpi-value {
+    font-size: 30px;
+  }
+.table-container {
+    overflow-y: scroll;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  table {
+    width: 100%;
+    height: 100%;
+  }
+  .table-header{
+      width: 100%;
+      height: fit-content;
+      /deep/ th{
+          font-weight: 400;
+          text-align: center;
+          padding: 7px;
+          border: 1px solid darkgray;
+          border-bottom: 0;
+      }
+  }
+  .kpi-title {
+    font-size: 100%;
+  }
+  .fb-reactions {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-column-gap: 10px;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .img{
+      width: 80%;
+      max-width: 100px;
+  }
+  .posts-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    > div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        //overflow-y: scroll;
+    }
+  }
+  .post-metrics{
+    width: 500px; 
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column;
+  }
+  .post-metrics1{
+    width: 80%; 
+    padding: 10px; 
+    display: flex;  
+    justify-content: space-between; 
+    margin-right: auto; 
+    margin-left: auto;
+    ::ng-deep span{
+        margin-right: 8px;
+    }
+  }
+  .post-metrics2{
+    width: 90%; 
+    padding: 10px; 
+    display: flex;  
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    margin-right: auto; 
+    margin-left: auto;
+    margin-top: 7px;
+    > div{
+        padding: 3px; 
+        width: 130px;
+        > span{
+            font-size: 14px;
+        }
+    }
+  }
+
+
+  // *********** FETHCING DATA
+  .loading-indicator{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tabs{
+  /deep/ .mat-ink-bar{
+    background-color:#4B85E6 !important;
+  } 
+}

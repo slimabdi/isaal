@@ -1,0 +1,13 @@
+.spinner__container{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .spinner{
+        position: absolute;
+        top: 40%;
+        left: 45%;
+    }
+}

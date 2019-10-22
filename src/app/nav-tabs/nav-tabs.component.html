@@ -1,0 +1,29 @@
+<nav mat-tab-nav-bar class="main-nav">
+  <a  *ngFor="let key of objectKeys(features);"
+      mat-tab-link
+      class="d-none d-sm-flex"
+      [routerLink]="'analytics/'+navTree[tool].features[key].route"
+      (click)="activeLink = 'analytics/'+navTree[tool].features[key].route" 
+      [active]="activeLink == 'analytics/'+navTree[tool].features[key].route"
+      >
+         {{ navTree[tool].features[key].name }} 
+  </a>
+
+  <button class="d-block d-sm-none hamburger-btn" (click)="toggleMenu()">=</button>
+</nav>
+
+<div class="main-buttons d-sm-none" *ngIf="opened">
+  <a *ngFor="let key of objectKeys(features);"
+    [routerLink]="'analytics/'+navTree[tool].features[key].route"
+    (click)="activeLink = 'analytics/'+navTree[tool].features[key].route; opened = false" 
+    >
+    <!-- [active]="activeLink == navTree[tool].features[key].route" -->
+  
+  <!-- <mat-icon *ngIf="navTree[tool].features[key].icon; else noIcon">
+    {{navTree[tool].features[key].icon}}
+    </mat-icon>
+  <ng-template #noIcon> -->
+    {{navTree[tool].features[key].name}}
+  <!-- </ng-template> -->
+    </a>
+</div>

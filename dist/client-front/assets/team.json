@@ -1,0 +1,16 @@
+{
+    "team": [
+        {
+            "name" : "Kpeiz 1",
+            "id" :"1"
+        },
+        {
+            "name" : "Kpeiz 2",
+            "id" :"2"
+        } ,
+        {
+            "name" :"Kpeiz ",
+             "id" :"3"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "analytics-home":{
+        "dashboards": "My Social Accounts",
+        "dashboard-visit-btn": "View Social Accounts",
+
+        "reports"   : "My Reports",
+        "reports-visit-btn": "View Repports",
+
+        "benchmarks": "My Benchmarks",
+        "benchmarks-visit-btn": "View Benchmarks"
+
+    },
+    "glossary":{
+        "definitions": [
+            {"name": "Impressions", "definition": "Total visualization number of the page and its posts."},
+            {"name": "Reach", "definition": "Number of unique people that a post can reach."},
+            {"name": "Total reach", "definition": "Number of people who have viewed a content (eg: posts displayed on their Facbook wall) associated to your page within the selected period."},
+            {"name": "Engaged users", "definition": "Exact number of people who have clicked on a post (comment, share, click on a photo, pause video..)."},
+            {"name": "Reached users", "definition": "Number of reached people with the page posts."},
+            {"name": "People Talking About That (PTAT)", "definition": "People that created a topic from your Facebook page through a post that they liked, commented or shared."},
+            {"name": "Comments", "definition": "Fans comments and sub-comments + Page administrators comments and responses."}
+        ]
+    }
+}

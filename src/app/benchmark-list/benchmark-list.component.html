@@ -1,0 +1,106 @@
+<!-- <div class="page-container" *ngIf="userbenchmarks$ | async as benchmarks; else wireframe"> -->
+<div class="page-container" >
+    <h5>My Benchmarks</h5>
+    <div class="my-benchmarks-cards-home-container" *ngIf="userbenchmarks$ && userbenchmarks$.length > 0; else wireframe">
+            <!-- <mat-card *ngFor="let benchmark of benchmarks.benchmarks"> -->
+        <mat-card *ngFor="let benchmark of userbenchmarks$" class="hoverable-card">
+
+            <mat-card-header>
+                <div mat-card-avatar class="card-avatar-text">{{ benchmark.name && benchmark.name.split(':') && benchmark.name.split(':')[1] && benchmark.name.split(':')[1][1] ? benchmark.name.split(':')[1][1] : benchmark.name[1] }}</div>
+                <mat-card-title class="benchmark-title">{{ !benchmark.name ? '' : benchmark.name.split(':') ? benchmark.name.split(':')[1] : benchmark.name | slice:0:25 }}</mat-card-title>
+                <mat-icon [matMenuTriggerFor]="mainMenu" class="delete-icon" color="primary">more_horiz</mat-icon>
+                <mat-menu #mainMenu="matMenu">
+                    <a mat-menu-item>Delete</a>
+                </mat-menu>
+                <mat-card-subtitle class="benchmark-subtitle">{{ benchmark.nd_type }}</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content class="benchmark-image-container">
+                <div *ngIf="benchmark.accounts && benchmark.accounts != null && benchmark.accounts.length > 0; else noAccount" class="benchmark-pages2">
+                    <div *ngFor="let account of benchmark.accounts.slice(0,5) | keyvalue">
+                        <img [src]="account.value.picture" class="bench-image2">
+                    </div>
+                </div>
+                <ng-template #noAccount>
+                    <div style="min-height: 88px;">
+                        No accounts found for this Benchmark!
+                    </div>
+                </ng-template>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <div style="display: flex; align-items: center">
+                    <img src="https://lipis.github.io/flag-icon-css/flags/4x3/ax.svg" width="24px">
+                    <span style="font-size: 12px; margin-left: 5px;">{{ benchmark.name.split(':')[0] }}</span>
+                </div>
+                <div>
+                    <button mat-flat-button routerLink="{{benchmark.id}}/{{benchmark.name.split('/').join(' ')}}" style="float:right;background-color: #ececec;
+                    color: #4b85e6;">Explore</button>
+                </div>
+            </mat-card-actions>
+
+        </mat-card>
+        <mat-card class="wireframe-card-hoverable" (click)="addBench()">
+                    
+            <mat-card-header class="dashboard-header">
+            </mat-card-header>
+            
+            <div class="home-dashboard-add-wireframe" >
+                <div class="plus">
+                    +
+                </div>
+                <div>
+                    Add a new Benchmark...
+                </div>
+            </div>
+
+            <mat-card-actions class="actions">
+            </mat-card-actions>
+
+        </mat-card>
+    </div>
+    
+    <ng-template #wireframe>
+        <div *ngIf="!userbenchmarks$; else new_bench" class="my-benchmarks-cards-home-container">
+            <mat-card *ngFor="let wireframe of [1,2,3,4,5,6,7,8,9,10,11,12]" class="wireframe-card">
+            
+                <mat-card-header class="benchmark-header">
+                    <div mat-card-avatar class="benchmark-picture-wireframe"></div>
+                    <mat-card-title class="title-wireframe"></mat-card-title>
+                    <!-- <mat-card-subtitle class="benchmark-subtitle"></mat-card-subtitle> -->
+                </mat-card-header>
+                
+                <div class="benchmark-image-container-wireframe"></div>
+
+                <mat-card-actions>
+                    <div class="title-wireframe"></div>                    
+                    <div class="button-wireframe"></div>
+                </mat-card-actions>
+
+            </mat-card>
+        </div>
+        <ng-template #new_bench>
+                <div class="my-benchmarks-cards-home-container">
+                    <mat-card class="wireframe-card-hoverable" (click)="addBench()">
+            
+                            <mat-card-header class="dashboard-header">
+                            </mat-card-header>
+                            
+                            <div class="home-dashboard-add-wireframe" >
+                                <div class="plus">
+                                    +
+                                </div>
+                                <div>
+                                    Create your first Benchmark!
+                                </div>
+                            </div>
+        
+                            <mat-card-actions class="actions">
+                            </mat-card-actions>
+            
+                    </mat-card>
+                </div>
+            </ng-template>
+    </ng-template>
+
+</div>

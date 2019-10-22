@@ -1,0 +1,22 @@
+{
+    "analytics-home":{
+        "dashboards": "Mes Comptes Sociaux",
+        "dashboard-visit-btn": "Visiter mes Comptes Sociaux",
+        "reports"   : "Mes Rapports",
+        "reports-visit-btn": "Visiter Rapports",
+        "benchmarks": "Mes Benchmarks",
+        "benchmarks-visit-btn": "Visiter Benchmarks"
+        
+    },
+    "glossary":{
+        "definitions": [
+            {"name": "Impressions", "definition": "Le nombre de visualisations total de la page et de ses publications"},
+            {"name": "Portée", "definition": "correspond au nombre de personnes uniques qu’une publication peut atteindre"},
+            {"name": "Portée totale", "definition": "Nombre de personnes ayant vu du contenu (ex : publications s\"affichant sur leur mur Facebook) associé à votre page lors de la période sélectionné."},
+            {"name": "Utilisateurs engagés", "definition": "nombre exact de personnes ayant cliqué sur la publication (commentaire, partage, clic sur photo, pause sur une vidéo…)."},
+            {"name": "Utilisateurs atteints", "definition": "Le nombre d’utilisateurs atteint par les publications de la page."},
+            {"name": "Personnes qui en parlent", "definition": "C\"est-à-dire le nombre de personnes ayant « créé une actualité » à partir de votre page Facebook en ayant Liké, commenté ou partagé une publication."},
+            {"name": "Commentaires", "definition": "commentaires et sous commentaires des fans + commentaires et réponses des administrateurs de la page."}
+          ]
+    }
+}

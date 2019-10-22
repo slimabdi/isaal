@@ -1,0 +1,161 @@
+.page-card{
+    max-width: 100%; 
+    // margin-right: 10px;
+
+    mat-card-header{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    mat-card-subtitle{
+        align-self: flex-end;
+    }   
+    
+}
+
+// mat-card{
+//     display: inline;
+// }
+
+
+.pages{
+    margin-bottom: 15px;
+    display: inherit;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 62%;
+    margin: 0 auto;
+
+    &__img{
+        border-radius: 50%;
+        margin-right: 15px;
+
+        img{
+            // height: 80%;
+            width: 50px;
+            border-radius: 50%;
+            margin: 7px auto;
+        }
+    }
+
+    .options-button{
+        // align-self: end;
+        float: right;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.show-pages{
+    display: block;
+    margin: 10px auto;
+
+}
+
+/deep/ .mat-tooltip {
+    font-size: 14px;
+  }
+
+  .add-page-container{
+        form{
+            display: flex;
+            justify-content: space-between;
+        }
+  }
+
+  .page-input{
+      width: 100%;
+  }
+  .color-awsome{
+    color: #3f51b5; 
+  }
+
+  li.center-vertical{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .center-content{
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  .filtersearch{
+    color: #3f51b5;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+    align-items: left;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+.addnewdash{
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid;
+    padding: 13px 0;
+    color: #3f51b5;
+}
+.pagination {
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    width: 100%;
+    transform: none;
+    opacity: 1;
+    height: 75%;
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+.iconeflesh{
+    display: none;
+}
+
+.butonadd{
+    margin-top: 13%;
+    background-color: #3f51b5;
+    padding: 1% 0;
+    width: 39%;
+    color: #fff;
+}
+.mat-button[disabled][disabled] {
+    background-color :#C8C8C8;
+}
+.mat-form-field {
+    display: block;
+    position: relative;
+    text-align: left;
+}
+
+.left-angle{
+    position: absolute;
+    left: 0;
+}
+
+.right-angle{
+    position: absolute;
+    right: 0;  
+}
+
+.container-fluid{
+    position: relative;
+}

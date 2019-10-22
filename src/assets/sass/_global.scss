@@ -1,0 +1,221 @@
+
+$xs_0: 0px;
+$sm_600: 600px;
+$md_960: 960px;
+$lg_1280: 1280px;
+$xl_1920: 1920px;
+
+$toolbar: 50px;
+$menu_bar: 50px;
+$card_avatar: 40px;
+
+$wireframe_bg: #ddd;
+$wireframe_card_bg: #eee;
+$dashboard_bg: #ececec;
+
+:root {
+    --current_screen_width: 100%;
+    --current_screen_height: 80vh;
+}
+
+mat-card{
+    padding: 0;
+    box-shadow: 0 3px 14px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12) !important;
+    border-radius: 0 !important;
+    // width: 100%;
+    //height: 255px;
+    // margin: 10px;
+    // height: fit-content;
+    // margin: 10px 20px 10px 0;
+  }
+  mat-card-header{
+    padding: 10px;
+    height: 55px;
+  }
+  .hoverable-card{
+    &:hover{
+     background: #ececec;
+     .overlay,.dashboard-overlay,.benchmark-overlay {
+        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
+      
+      }
+    }
+  }
+  .wireframe-card{
+    background: $wireframe_card_bg;
+    &-hoverable{
+      background: $wireframe_card_bg;
+      cursor: pointer;
+      &:hover{
+        background: #ccc;
+        .home-dashboard-add-wireframe{
+          background: #aaa;
+          >div{
+            color: #222;
+          }
+          .plus{
+            border: 1px solid #222;
+          }
+        }
+      }
+    }
+  }
+  .title{
+    font-size: 14px;
+    margin-top: 8px;
+    // margin-left: 5px;
+    font-weight: 500;
+  }
+  .mat-card-image{
+    margin-top: 0 !important;
+    margin: 0;
+    width: 100%;
+    // height: 150px;
+    object-fit: cover;
+  } 
+  mat-card-content{
+    padding: 10px;
+    // height: 80px;
+    margin-bottom: 0;
+  }
+  mat-card-actions{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px !important;
+    padding: 5px !important;
+    margin-left: 10px;
+  }
+
+
+.cards-container{
+    display: flex;
+    justify-content: center;
+    >div{
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+}
+  
+.widget-item{
+    border-radius: 0 !important;
+    //box-shadow: unset !important;
+    // box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 2px 6px 0px rgba(0, 0, 0, 0.14), 0px 1px 0px 0px rgba(0, 0, 0, 0.12) !important;
+    &-number{
+        border-radius: 0 !important;
+        box-shadow: unset !important;
+        background: #4B85E6;
+        color: white;
+    }
+    &-interactions{
+        border: 1px solid #4B85E6;
+    }
+}
+
+.page-container{
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+    // flex-wrap: wrap;
+    // margin: 10px;
+    // padding: 10px;
+    
+    h1.mat-headline{
+        display: block !important;
+        width: 100%;
+    }
+
+    // .benchmark-card, .card{
+    //     //flex: 1;
+    //     //flex-grow: 0;
+    //     max-height: 400px;
+    //     min-height: 300px;
+    //     //min-width: 350px;
+    //     width: 350px;
+    //     //max-width: 400px;
+    //     margin: 7px;
+    //     padding: 0; 
+
+    //     &__analytics{
+    //         padding: 24px !important;
+    //     }
+    //     &__dash {
+    //         height:350px !important;
+    //         position: relative;
+    //         img {
+    //             object-fit: cover;
+    //             height: 140px;
+    //         }
+            
+    //         .mat-card-actions{
+    //             position: absolute;
+    //             bottom: 24px;
+
+    //         }
+            
+    //     }
+
+    //     &__pack{
+    //         padding: 24px !important;
+    //     }
+    
+    // }
+    
+}
+
+.list_cards{
+    //max-width: 1500px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: auto;
+    // grid-gap: 10px;
+}
+    
+
+.benchmark-card > mat-card{
+    min-height: 250px;
+    padding: 0;
+}
+.mat-card-avatar{
+    background-position: center center;
+    background-size: cover;
+}
+
+@for $i from 0 through 14{
+    .wireframe-div-#{$i}{
+        background: #bbb;
+        border-radius: 5px;
+        animation: wireframe-animation 2s infinite #{$i * 2 / 10}s linear;
+    }
+}
+
+
+// for the wireframe
+@keyframes wireframe-animation{
+    0%{
+        opacity: 1;
+        }
+    50%{
+        opacity: 0.2;
+        }
+    60%{
+        opacity: 0.2;
+    }
+    100%{
+        opacity: 1;
+    }
+  }
+  
+// for kpeiz logo animation using lottie:
+.lottie-animation{
+    ::ng-deep path{
+        fill: #999;
+    }
+}

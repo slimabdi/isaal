@@ -1,0 +1,73 @@
+<!-- <div *ngIf="requestedPage && requestedPage.status=='fetching'; else normalMode" >
+  <h2 class="mat-h2">Please wait while data is being fetched.</h2>
+</div> -->
+<div class="center-content">
+  <h5 class="addnewdash">ADD NEW DASHBOARD</h5>
+  <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-6 filtersearch">
+        Choose from list below
+      </div>
+      <div class="col-md-6">
+          <mat-form-field  class="full-width ">
+                 
+              <input type="text" placeholder="Search" matInput   [formControl]="userpageName"><i class="search-icon fa fa-search"></i>
+              
+            </mat-form-field>
+      </div>
+    </div>
+  <div class="pages" *ngIf="pages">
+
+
+      <div class="text-center">
+          <!-- pager -->
+          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <li [ngClass]="{disabled:pager.currentPage === 1}" class="center-vertical" [ngStyle]="{ display: iconeflesh }" >
+                  <a (click)="setPage(pager.currentPage - 1)"> <i class="fa fa-angle-left fa-lg color-awsome left-angle"></i> </a>
+              </li>
+ 
+              <li class="pages__img" *ngFor="let item of filtereddashbords |async "  [ngClass]="{active:pager.currentPage === page}">
+                <img (click)="onImageClick(item.id)" matTooltip="Fans : {{ item.fan_count }}" matTooltipPosition="right"
+                  mat-card-image src="{{item.picture.data.url}}">
+              </li>
+    
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="center-vertical" [ngStyle]="{ display: iconeflesh }">
+                  <a (click)="setPage(pager.currentPage + 1)"> <i class="fa fa-angle-right fa-lg color-awsome right-angle"></i></a>
+              </li>
+          </ul>
+      </div>
+
+
+  </div>
+
+
+  <button *ngIf="pages && pages.length>9" mat-button (click)="showAllPages()" color="primary" class="show-pages">Show All pages</button>
+
+  <div class="add-page-container">
+    <h6 style="color: #3f51b5">or copy & paste the facebook page</h6>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field class="page-input">
+        <input ngModel matInput name="page" required pattern="^(http[s]?:\/\/)[www.facebook]+(?:\.[com]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+          placeholder="Copy & paste Facebook page url">
+      </mat-form-field>
+      
+      <button mat-button class="butonadd" [disabled]="!f.valid" type="submit">create Dashboard</button>
+    </form>
+  </div>
+
+
+  <div *ngIf="requestedPage">
+    <mat-card class="page-card">
+      <mat-card-header>
+        <div mat-card-avatar [style.background-image]="'url(' + requestedPage.picture.data.url +')'" class="example-header-image"></div>
+        <mat-card-title>{{ requestedPage.name }}</mat-card-title>
+        <mat-card-subtitle> Fans: {{ requestedPage.fan_count }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="savePage()">Save page to account</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+</div>
+<button hidden mat-dialog-close></button>

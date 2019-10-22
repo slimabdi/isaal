@@ -1,0 +1,16 @@
+.mat-selection-list {
+    .mat-list-option{
+        .mat-list-item-content{
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+    }
+}
+/deep/ .mat-list {
+    &-item{
+       &-content{
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+    }
+}

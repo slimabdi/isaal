@@ -1,0 +1,59 @@
+@import '../../assets/sass/global';
+
+.page-container{
+    padding: 20px;
+    height: calc(100% - 50px);
+    //overflow-y: auto;
+}
+
+.table-container{
+    overflow-y: auto;
+    position: relative;
+    height: 80%;
+    margin: 0 10px;
+    table{
+        width: 100%;
+    }
+}
+h5{
+    font-size: 1.55rem !important; 
+    font-weight: 300;
+  }
+
+.mat-cell.cdk-column-name{
+    cursor: pointer;
+}
+
+.mat-cell.cdk-column-edit{
+    .mat-icon{
+        cursor: pointer;
+        &:hover{
+            color: #00bcd4;
+        }
+    }
+}
+
+tr[mat-row]{
+    // cursor: pointer;
+    &:hover{
+        background-color: #e1f5fe;
+    }
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    width: 99%;
+    align-items: baseline;
+    margin-top: -11px;
+    mat-form-field{
+        width: 14vw;
+    }
+}
+
+.loading-indicator{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

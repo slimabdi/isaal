@@ -1,0 +1,237 @@
+$report_page_header: 85px;
+$report_page_subheader: 75px;
+
+.header{
+  height: 50px;
+  margin: 20px 40px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  
+  }
+  
+  .subheader{
+    width: 100%;
+    height: $report_page_subheader;
+    padding: 10px;
+    background: #ececec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .title{
+    font-size: xx-large;
+    line-height: 1;
+  }
+  .subtitle{
+    color: #6c92dc;
+  }
+  .grid-container {
+    width: calc(85vh * 100 / 70.7);
+    height: 85vh;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .gridster { 
+    background-color : white;
+    height: calc(100% - (#{$report_page_header} + #{$report_page_subheader}));
+  }
+  
+  .dashboard-card {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    // transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .delete-button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  ::ng-deep .gridster-item-content{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 1px solid #ccc;
+    &-editor{
+      border: 0;
+    }
+  }
+
+  /* Absolute Center Spinner */
+.loading-indicator {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading-indicator:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+  
+  .widget-item{
+      //border-radius: 5px;
+      //border: 1px solid #ccc;
+      box-shadow: unset;
+  }
+  
+  .posts_tile {
+    height: 300px !important;
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  
+  .dashboard-content {
+    width: 90%;
+    height: 60%;
+    padding: 15px;
+  
+  }
+
+  
+  .mat-grid-tile {
+    padding: 0px;
+  }
+  
+  .circular {
+    border-radius: 50px;
+  }
+  
+  .kpi-value {
+    font-size: 30px;
+  }
+  
+  .kpi-title {
+    font-size: 100%;
+  }
+  
+  .fb-reactions {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    width: 600px;
+  }
+  .reaction-cells {
+    width: 70px;
+  }
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .interactions-card {
+    width: 700px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+
+  
+  .d-handle {
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 10px 0 5px 10px;
+    width: 100%;
+    height:50px;
+    top:0;
+    right:0;
+    position:absolute;
+    z-index:2;
+    //background: gray;
+    &:hover{
+      cursor: grab;
+    }
+  
+  }
+
+  .report-actions{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+
+    button:last-child{
+      margin-left: 10px;
+    }
+  }
+  .mat-elevation-z6 {
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 6px 18px 0px rgba(0, 0, 0, 0.12) !important;
+}
+  .page__header{
+    height: $report_page_header;
+    display: flex;
+    align-self: center;
+    padding: 10px;
+    background-color: #fb3e55;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+// ------------------------------------------------------
+//For printing (testing)
+//-------------------------------------------------------
+
+.pages{
+  margin: 20px 40px 0 0;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+
+  .page{
+    width: 60vw ;
+    height : calc(0.65 * 6vw);
+    padding: 10px;
+    margin: 0 auto 20px;
+    position:relative;
+    
+    .widget-item {
+      position:absolute;
+      margin : 10px;
+    }
+    &__content{
+        width: inherit;
+        height: inherit;
+    }
+  }
+}
+
+
+  

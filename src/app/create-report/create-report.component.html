@@ -1,0 +1,39 @@
+<h2 class="mat-h2">Create Report</h2>
+<mat-divider></mat-divider>
+<div class="container">
+  <div class="form-container mt-3">
+      <form #f="ngForm" (ngSubmit)="generateReport(f)">
+            <div class="form">
+            <div class="form__labels">
+                <mat-label>Report Name</mat-label>
+                <mat-label>Social account</mat-label>
+                <mat-label>Date</mat-label>
+            </div>
+            <div class="form__inputs">
+                <mat-form-field>
+                <input matInput placeholder="Name" ngModel name="reportName" required>
+                </mat-form-field>
+                <mat-form-field>
+                <mat-select [(ngModel)]="default" name="dashboard_id" required (selectionChange)="getSociAccChange($event)">
+                    <mat-option *ngFor="let dashboard of dashboards" value="{{dashboard.id}}">
+                    {{dashboard.name}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <ngx-mat-drp (selectedDateRangeChanged)="updateRange($event)" [options]="options" #dateRangePicker></ngx-mat-drp>
+            </div>
+            </div>
+
+          <div class="buttons-container">
+            <button mat-stroked-button color="accent" class="mr-2" type="button" mat-dialog-close >Cancel</button>
+            <button 
+            mat-raised-button 
+            color="primary" 
+            [disabled]="!f.valid"
+            type="submit">Create Report</button>
+          </div>
+        </form>
+       
+  </div>
+
+</div>

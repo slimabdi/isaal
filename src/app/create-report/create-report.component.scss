@@ -1,0 +1,39 @@
+.container{
+    height: calc(90% - 1px);
+    position: relative;
+    overflow: hidden;
+}
+
+.mat-h2{
+    height: 10%;
+    margin: 0 !important;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+
+    &__labels{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        text-decoration: italic;
+    }
+
+    &__inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.buttons-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;    
+    right: 5px;
+}

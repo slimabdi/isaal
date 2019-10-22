@@ -1,0 +1,180 @@
+@import '../../assets/sass/global';
+@import '../../assets/sass/screens/xs_0';
+@import '../../assets/sass/screens/sm_600';
+@import '../../assets/sass/screens/md_960';
+@import '../../assets/sass/screens/lg_1280';
+@import '../../assets/sass/screens/xl_1920';
+
+$dashboard_card_image_width: calc(var(--current_screen_width) / 4.25);
+$dashboard_card_image_height: calc(#{$dashboard_card_image_width} / 100 * 37);
+
+.home-dashboard-add-wireframe{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: $dashboard_card_image_height;
+  background: $wireframe_bg;
+  cursor: pointer;
+  >div{
+    color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+  .plus{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #555;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+}
+.actions{
+  margin: 5px 5px 0 5px !important;
+  padding: 5px !important;
+  height: 50px;
+}
+.dashboard-cover{
+  height: $dashboard_card_image_height;
+  object-fit: cover;
+}
+.page-container{
+  padding: 20px;
+  height: calc(100% - #{$toolbar});
+  overflow-y: auto;
+}
+.my-dashboards-cards-home-container{
+  // display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, #{$dashboard_card_image_width}) !important;
+  grid-gap: 10px;
+  // grid-template-rows: 300px;
+  width: 100%;
+  // max-width: $lg_1280;
+}
+.dashboard-header{
+  display: flex;
+  align-items: center;
+}
+.dashboard-picture{
+  width: $card_avatar;
+  height: $card_avatar;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid #cecece;
+  &-wireframe{
+    width: $card_avatar;
+    height: $card_avatar;
+    background: $wireframe_bg;
+  }
+}
+.title{
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  &-wireframe{
+    width: 70px;
+    height: 15px;
+    border-radius: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: $wireframe_bg;
+  }
+}
+.delete-icon{
+  color: #333;
+  position: absolute;
+  border-radius: 50%;
+  right: 9px;
+  top: 18px;
+  width: 16px;
+  padding: 0px;
+  cursor: pointer;
+  font-size: 20px;
+  //display: none;
+}
+.button-wireframe{
+  width: 40px;
+  height: 20px;
+  border-radius: 3px;
+  background: $wireframe_bg;
+}
+.dashboard-image-container{
+  height: $dashboard_card_image_height;
+  width: $dashboard_card_image_width;
+  overflow-y: hidden;
+  position: relative;
+  cursor: pointer;
+  &-wireframe{
+    cursor: unset;
+    height: $dashboard_card_image_height;
+    width: $dashboard_card_image_width;
+    background: $wireframe_bg;
+  }
+}
+.dashboard-overlay {
+  position: absolute;
+    width: 100%;
+    height: $dashboard_card_image_height;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.6) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
+}
+.team-members{
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+}
+.team-number{
+  font-size: 14px; 
+  font-weight: 500;
+}
+.member-image, .member-image-wireframe{
+  border-radius: 50%; 
+  width: 24px; 
+  height: 24px; 
+  border: 2px solid $wireframe_card_bg;
+  background: $wireframe_bg;
+  margin-left: -12px;
+  &:first-child{
+    margin-left: 0;
+  }
+}
+.report-button{
+  background: transparent;
+  color: #333;
+  float: right;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+h5{
+  font-size: 1.55rem !important; 
+  font-weight: 300;
+}
+
+//*******************************************
+
+
+.loading-indicator{
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wireframe-header{
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  > :nth-child(1){
+    width: 50px; 
+    min-width: 50px; 
+    height: 50px; 
+    min-height: 50px; 
+    border-radius: 50%; 
+    background: #bbb;
+  }
+}

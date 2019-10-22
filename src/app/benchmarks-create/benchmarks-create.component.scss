@@ -1,0 +1,204 @@
+.stretched-tabs {
+    max-width: 800px;
+}
+
+.radio-group{
+width: 100%;
+display: flex;
+flex-direction: column;
+max-height: 250px;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+
+
+.radio-button {
+margin: 5px;
+}
+
+.selected-value {
+margin: 15px 0;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-left: 10px;
+    max-width: 100%;
+
+    .form{
+        width: 100%;
+        
+        .full-width{
+            width: 100%;
+            float: right;
+        }
+    }
+}
+
+.input-container{
+    display: flex;
+    justify-content: space-between;
+
+    .type-input{
+        width: 40%;
+        padding-right: 30px;
+    }
+}
+
+/deep/ .mat-ink-bar{
+    background-color:#4B85E6 !important;
+    border-radius: 100px;
+    // margin-bottom: 5px;
+ } 
+
+
+.block {display: block}
+.clear { clear: both;}
+
+::-webkit-input-placeholder { /* Edge */
+    font-size:14px;
+    color: #2699fb;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer */
+    font-size:14px;
+    color: #2699fb;
+  }
+  
+  ::placeholder {
+    font-size:14px;
+    color: #2699fb;
+  }
+
+.colorexisiting{
+    font-size: 16px;
+    color: #2699fb;
+    padding: 23px 15px;
+    box-sizing: border-box;
+
+}
+
+.benchmark-columns {
+    -webkit-column-count: 3;
+    column-count: 2;
+    -webkit-column-gap: 1.25rem;
+    column-gap: 0.25rem;
+    orphans: 1;
+    widows: 1;
+    /* break-after: page; */
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+.benchmark-columns .benchmarkcard {
+    display: contents;
+    width: 100%;
+}
+
+.benchmark-columns .card {
+    margin-bottom: 0.75rem;
+}
+
+.benchmark-columns .benchmarkcard {
+    margin-bottom: 0.75rem;
+}
+
+.benchmarkcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    border-radius: 0.25rem;
+}
+
+.mat-tab-label .mat-tab-label-content{
+    font-size: 20px !important;
+}
+
+.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    
+   
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    background-color: transparent;
+    color: #2699fb;
+} 
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background-color: transparent;
+}
+
+.block.mt-4.mat-stroked-button{
+    float: right;
+}
+
+.mat-stroked-button[disabled][disabled]{
+    float: right;  
+}
+.myinput{
+    border: unset;
+    margin-left: 1%;
+}
+.mat-mini-fab.mat-accent {
+    background-color: #2699fb;
+}
+
+
+.border-bleu{
+    margin-bottom: 5%;
+}
+
+.butonadd{
+    margin-top: 5%;
+    background-color: #3f51b5;
+    padding: 1% 0;
+    width: 30%;
+    color: #fff;
+}
+.mat-button[disabled][disabled] {
+    background-color :#C8C8C8;
+}
+.mat-dialog-container{
+    overflow: hidden;
+}
+.border-color{
+    border-color:#2699fb !important
+}
+
+.color-input{
+color: #2699fb
+}
+
+.radio-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.mat-radio-button{
+    .mat-radio-label{
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        white-space: pre-line !important;
+        vertical-align: middle; 
+    }
+}
+.mat-radio-label-content{
+    padding-left: 5px !important;
+}

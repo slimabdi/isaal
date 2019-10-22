@@ -1,0 +1,127 @@
+<div class="page-container">
+
+  <div class="year-month">
+    <span (click)="setPeriod()">
+      {{ period == 'yearly' ? 'Change to monthly subscription' : 'Change to yearly subscription' }}
+    </span>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th rowspan="2" class="head">
+        <div>Choose your</div> 
+        <div>pricing plan</div>
+        <div><span>{{ period | uppercase }}</span> SUBSCRIPTION</div>
+      </th>
+      <th class="pack-header" *ngFor="let pack of products.packs" [style.background]="pack.color">
+        {{ pack.title | uppercase }}
+      </th>
+    </tr>
+    <tr *ngFor="let feature of products.features">
+      <td *ngIf="feature != 'subscription'">{{ feature | titlecase }}</td>
+      <td *ngFor="let pack of products.packs" class="pack-feature">
+        <div *ngIf="feature == 'subscription'; else other" class="price">
+            <div class="price-number">
+                {{ period == 'monthly' ? pack[feature].monthly : pack[feature].yearly }}
+            </div>
+            <div class="price-details">
+                <div>
+                    {{ currency }}
+                </div>
+                <div>
+                    / MONTH
+                </div>
+            </div>
+            
+        </div>
+
+        <ng-template #other>
+            <div *ngIf="pack[feature] == 'true'; else no" [style.color]="pack.color">
+                <i class="fas fa-check"></i>
+            </div>
+            <ng-template #no>
+                <div *ngIf="pack[feature] == 'false'; else normal" [style.color]="pack.color">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ng-template #normal>
+                    {{ pack[feature] }}
+                </ng-template>
+            </ng-template> 
+        </ng-template>
+        
+        
+      </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;"><button mat-raised-button class="contact-us">Contact us</button></td>
+        <td *ngFor="let pack of products.packs" style="text-align: center;">
+          <button mat-raised-button [style.background]="pack.color" class="buy">Buy now!</button>
+        </td>
+    </tr>
+  </table>
+
+  <table class="infos">
+    <tr>
+      <th rowspan="2" class="extras">
+        Add some extra <br><span>Spices</span> to your pack!
+      </th>
+      <th *ngFor="let spice of objectKeys(products.options[0])"><span>+1</span> {{ spice | titlecase }}</th>
+    </tr>
+    <tr>
+      <td *ngFor="let spice of objectValues(products.options[0])">
+        <div class="price">
+          <div class="price-number2">
+              {{ spice }}
+          </div>
+          <div class="price-details">
+              <div class="currency">
+                  {{ currency }}
+              </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+    <!-- <div *ngFor="let product of products; let i = index">
+          
+      <mat-card class="main-card">
+        <div class="top-image-container">
+          <img [src]="'../../assets/img/man' + (i+1) + '.svg'" class="top-image">
+        </div>
+          <mat-card-title class="title">{{ product.title | uppercase}}</mat-card-title>
+          <mat-card-subtitle class="subtitle">{{ product.about }}</mat-card-subtitle>
+          <mat-card-content>
+            {{ product.desc }} <br>
+            <h3 class="mat-h3 pt-2"> <strong>Select Payment plan</strong></h3>
+          </mat-card-content>
+          <mat-card-actions>
+            <form #f="ngForm" class="payment-form" (ngSubmit)="buyPack(product.product_id, f)">
+                <mat-form-field>
+                    <mat-select 
+                      ngModel 
+                      name="payment_plan" 
+                      placeholder="Payment plan" required>
+                      <mat-option 
+                      *ngFor="let plan of product.plans"
+                        [value]="plan.id">
+                        {{ plan.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button 
+                  [disabled]="processingPayment || !f.valid"
+                  type="submit"
+                  class="d-block"
+                  mat-stroked-button>Buy Now!</button>
+            </form>
+          </mat-card-actions>
+      </mat-card>    
+      {{ product | json }}
+  </div>   -->
+</div>
+
+<!-- <div class="loading-indicator" *ngIf="processingPayment">
+  <mat-spinner></mat-spinner>
+</div> -->

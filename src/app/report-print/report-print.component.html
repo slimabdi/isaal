@@ -1,0 +1,13 @@
+<div *ngIf="pages.length>0" class="pages">
+  <div *ngFor="let page of pages; index as i" class="page">
+    <div class="page__header mat-elevation-z8">{{ page.name }}</div>
+    <div class="page__content" *ngIf="page.status==1 ;else deletedPage" #gridster>
+        <div class="widget-item mat-elevation-z2" *ngFor="let item of page.widgets; index as wref" reportGrid [x]="item.x" [y]="item.y" [cols]="item.cols" [rows]="item.rows">
+          <div class= "d-handle">{{ item.name }}</div>
+          <div class="gridster-item-content">
+            <app-widget class="dashboard-card" [widget]="item" [since]="since" [until]="until" [page]="i" [wref]="wref" [textExist]="textExist" #widget></app-widget>
+        </div>
+      </div>
+  </div>
+</div>
+</div>

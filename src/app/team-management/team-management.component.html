@@ -1,0 +1,130 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="mat-h5">
+        <h5>Add New team's name </h5>
+      </div>
+      <mat-form-field class="example-full-width">
+        <input matInput name="name" type="text" placeholder="team's name" [(ngModel)]="name" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <button *ngIf="buttonType == 'Invite'" (click)="Createteam()" [disabled]="!name" type="submit" mat-raised-button>
+        Set Team
+      </button>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mat-h5">
+        <h5>Add a team member email</h5>
+      </div>
+
+      <form [formGroup]="teamForm">
+        <mat-form-field (click)="Gettlistteam()">
+          <mat-select placeholder="Select team" formControlName="Teams" (selectionChange)="viewList($event)">
+            <mat-option *ngFor="let team of Teamgroupe" [value]="team.id">
+              {{team.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field class="block">
+          <input matInput placeholder="Email" formControlName="email" (input)="mailChanged($event)" [(ngModel)]="email">
+          <mat-error *ngIf="teamForm.get('email').hasError('email') && !teamForm.get('email').hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="teamForm.get('email').hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button *ngIf="buttonType == 'Invite'" (click)="Createteam()" [disabled]="!name" type="submit"
+          mat-raised-button>
+          Set Team
+        </button>
+      </form>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mat-h5">
+          <h5>Add a team member email</h5>
+        </div>
+        <form [formGroup]="teamForm">
+          
+          <mat-form-field (click)="Gettlistteam()">
+            <mat-select placeholder="Select team" formControlName="Teams" (selectionChange)="viewList($event)">
+              <mat-option *ngFor="let team of Teamgroupe" [value]="team.id">
+                {{team.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field class="block">
+            <input matInput placeholder="Email" formControlName="email" (input)="mailChanged($event)" [(ngModel)]="email">
+            <mat-error *ngIf="teamForm.get('email').hasError('email') && !teamForm.get('email').hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="teamForm.get('email').hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <div>
+
+            <form #f="ngForm" (ngSubmit)="sumbit(f, teamForm)">
+              <mat-list *ngIf="pages">
+                <div class="heading">
+                  <h2 class="mat-h2">Pages</h2>
+                  <mat-checkbox (change)="selectAll($event)" name="checkAll" ngModel></mat-checkbox>
+                </div>
+                <mat-list-item *ngFor="let page of pages">
+
+
+                  <div class="mat-list-text">
+                    {{ page.name }}
+                  </div>
+                  <mat-checkbox matInput [ngModel]="page.checked" name="{{page.id}}" checked="page.checked"></mat-checkbox>
+                </mat-list-item>
+              </mat-list>
+              <button *ngIf="buttonType == 'Invite'" [disabled]="!teamForm.valid" type="submit" mat-raised-button>
+                Invite</button>
+              <button *ngIf="buttonType == 'Update'" [disabled]="!teamForm.valid" style="margin-top: 25px" (click)="updateMember()"
+                mat-raised-button>
+                Update</button>
+            </form>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="mat-h5">
+          <h5>Or edit your team</h5>
+        </div>
+        <mat-list>
+          <div *ngIf="team.length>0; else noTeam">
+            <div class="team-editor" *ngFor="let member of team">
+              <mat-list-item>{{ member.member.name }} </mat-list-item>
+              <div class="actions">
+                <button mat-icon-button (click)="onEdit(member)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onDelete(member)">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #noTeam>
+            
+          </ng-template>
+        </mat-list>
+      </div>
+      
+  </div>
+</div>
+</div>

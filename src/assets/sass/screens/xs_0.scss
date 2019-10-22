@@ -1,0 +1,7 @@
+@import '../../assets/sass/global';
+
+@media (min-width: $xs_0) and (max-width: $sm_600){
+    .calendar{
+        display: none;
+    }
+}

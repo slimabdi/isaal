@@ -1,0 +1,60 @@
+<div class="page-container">
+
+    <div class="header-container">
+      <h5>{{ related_dashboard ? related_dashboard : 'My' }} Reports</h5>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+      
+    <div *ngIf="dataSource.data && dataSource.data.length > 0; else spinner" class="table-container ">
+        <table mat-table [dataSource]="dataSource" matSort>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell (click)="viewReport(element)" *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+            
+              <!-- Start Date Column -->
+              <ng-container matColumnDef="start_date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+              </ng-container>
+            
+              <!-- End Date Column -->
+              <ng-container matColumnDef="end_date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.end_date}} </td>
+              </ng-container>
+
+              <!-- Edit Report -->
+              <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+                <td mat-cell (click)="editReport(element)" *matCellDef="let element"> <mat-icon>edit</mat-icon> </td>
+              </ng-container>
+
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator> -->
+        
+     </div>
+
+     <ng-template #spinner>
+        <div *ngIf="dataSource.data == null; else circleSpinner">
+          You don't have any reports for this dashboard yet!
+        </div>
+        
+        <ng-template #circleSpinner>
+          <div class="loading-indicator">
+              <mat-spinner></mat-spinner>
+          </div>
+        </ng-template>
+
+    </ng-template>
+    
+</div>
+
+
