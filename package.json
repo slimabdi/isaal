@@ -52,7 +52,7 @@
     "ngx-mat-daterange-picker": "^1.1.4",
     "ngx-pagination": "^3.2.1",
     "ngx-quill": "^3.0.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "underscore": "^1.9.1",
